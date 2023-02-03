@@ -60,4 +60,9 @@ public toggleDoneStateById(todo: Todo): void {
   this.firestore.doc('todos/' + todo.id).update({ doneDate: todo.doneDate ? null : new Date() });
 }
 
+public translateToDoById(id: string, translatedText: string): void {
+  const item = this.todos.find((item: Todo) => item.id === id);
+  item!.description = translatedText;
+}
+
 }

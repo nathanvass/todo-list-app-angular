@@ -14,6 +14,7 @@
   <button class="button" *ngIf="!item.doneDate" (click)="todoListService.toggleDoneStateById(item)">Done</button>
   <button class="button" *ngIf="item.doneDate" (click)="todoListService.toggleDoneStateById(item)">Undone</button>
   <button class="button" (click)="todoListService.deleteTodoById(item.id)">Löschen</button>
+  <button class="button" (click)="translate(item.id, item.description)">Übersetzen</button>
   <span [ngStyle]="{'text-decoration': (item.doneDate ? 'line-through' : 'none')}">
     <span class="date">{{ item.dueDate.seconds * 1000 | date:'EE, dd.MM.' }}</span>
     <span class="description">{{ item.description }}</span>
@@ -24,4 +25,3 @@
   Todo: {{ (todoListService.todos | todoFilterPipe: false).length }}<br />
   Done: {{ todoListService.todos.length }}
 </p>
-
