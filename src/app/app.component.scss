@@ -1,0 +1,40 @@
+ul {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0 40px;
+    width: 100%;
+    background-color: rgb(135, 197, 255);
+    height: 40px;
+    line-height: 40px;
+}
+
+li {
+    display: inline;
+    margin-right: 40px;
+}
+
+main {
+    margin-top: 40px;
+    padding: 40px;
+}
+
+.user-info {
+    position: absolute;
+    right: 40px;
+    top: 0;
+    line-height: 40px;
+  }
+
+  .logout{
+    max-width: 100px;
+    max-height: 200px;
+    font-size: 15px;
+  }
+
+  .login{
+    max-width: 250px;
+    max-height: 250px;
+    font-size: 100px;
+  }

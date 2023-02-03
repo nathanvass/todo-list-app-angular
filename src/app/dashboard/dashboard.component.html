@@ -1,0 +1,5 @@
+<h2>Dashboard</h2>
+<div class="bar-chart">
+    <div [ngStyle]="{ 'width': getTodoPercentage().toString() + '%' }" class="todo-bar">Todo: {{ getTodoPercentage() | number:'1.0-0' }} %</div>
+    <div [ngStyle]="{ 'width': getDonePercentage().toString() + '%' }" class="done-bar">Done: {{ getDonePercentage() | number:'1.0-0' }} %</div>
+</div>

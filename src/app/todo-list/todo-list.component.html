@@ -1,0 +1,27 @@
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<h2 class="title">Todos</h2>
+
+<!-- <fa-icon [icon]="['fas', 'xmark']"></fa-icon> -->
+
+<div class="addItem">
+  Neues Todo: <input class="textfield" type="text" [(ngModel)]="todoDescription"> <input type="date" [(ngModel)]="todoDueDate"> <button (click)="addTodo()">Hinzufügen</button>
+</div>
+
+<p>Done anzeigen: <input type="checkbox" [(ngModel)]="showDone"></p>
+
+<!-- <div *ngFor="let item of todoListService.getTodos(showDone ? undefined : false) | async"> -->
+<div class="block" *ngFor="let item of (todoListService.todos | todoFilterPipe: (showDone ? null : false))">
+  <button class="button" *ngIf="!item.doneDate" (click)="todoListService.toggleDoneStateById(item)">Done</button>
+  <button class="button" *ngIf="item.doneDate" (click)="todoListService.toggleDoneStateById(item)">Undone</button>
+  <button class="button" (click)="todoListService.deleteTodoById(item.id)">Löschen</button>
+  <span [ngStyle]="{'text-decoration': (item.doneDate ? 'line-through' : 'none')}">
+    <span class="date">{{ item.dueDate.seconds * 1000 | date:'EE, dd.MM.' }}</span>
+    <span class="description">{{ item.description }}</span>
+  </span>
+</div>
+
+<p class="summary">
+  Todo: {{ (todoListService.todos | todoFilterPipe: false).length }}<br />
+  Done: {{ todoListService.todos.length }}
+</p>
+

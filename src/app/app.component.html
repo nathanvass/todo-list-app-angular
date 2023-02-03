@@ -1,0 +1,20 @@
+<nav>
+  <ul>
+    <li><a routerLink="/todo-list">Todo Liste</a></li>
+    <li><a routerLink="/dashboard">Dashboard</a></li>
+  </ul>
+
+  <div *ngIf="afAuth.user | async as user" class="user-info">
+    {{ user.displayName }}
+    <button class="logout" (click)="logout()"><span>Logout</span><fa-icon [icon]="['fas', 'person-through-window']"></fa-icon></button>
+  </div>
+</nav>
+
+<main>
+  <div *ngIf="!(afAuth.user | async)">
+    <h1>Login</h1>
+    <button class="login" (click)="login()"><span>Login</span><fa-icon [icon]="['fas', 'person-arrow-up-from-line']"></fa-icon></button>
+  </div>
+
+  <router-outlet></router-outlet>
+</main>
